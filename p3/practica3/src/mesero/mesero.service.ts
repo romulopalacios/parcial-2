@@ -32,10 +32,10 @@ export class MeseroService {
   }
 
   async remove(id: string) {
-    const plato = await this.meseroRepository.findOne({ where: { id } });
-    if (plato) {
-      plato.estado = 'inactivo';
-      return this.meseroRepository.save(plato);
+    const mesero = await this.meseroRepository.findOne({ where: { id } });
+    if (mesero) {
+      mesero.estado = 'inactivo';
+      return this.meseroRepository.save(mesero);
     }
     return null;
   }
