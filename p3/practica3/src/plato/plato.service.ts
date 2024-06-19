@@ -16,15 +16,15 @@ export class PlatoService {
   
   async create(createPlatoDto: CreatePlatoDto) {
     const plato = this.platoRepository.create(createPlatoDto);
-    return this.platoRepository.save(plato);
+    return await this.platoRepository.save(plato);
   }
 
   async findAll() {
-    return this.platoRepository.find({ where: { estado: 'activo' } });
+    return await this.platoRepository.find({ where: { estado: 'activo' } });
   }
 
   async findOne(id: string) {
-    return this.platoRepository.findOne({ where: { id, estado: 'activo' } });
+    return await this.platoRepository.findOne({ where: { id, estado: 'activo' } });
   }
 
   async update(id: string, updatePlatoDto: UpdatePlatoDto) {

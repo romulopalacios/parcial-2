@@ -39,10 +39,10 @@ export class PedidoService {
   }
 
   async remove(id: string) {
-    const plato = await this.pedidoRepository.findOne({ where: { id } });
-    if (plato) {
-      plato.estado = 'inactivo';
-      return this.pedidoRepository.save(plato);
+    const pedido = await this.pedidoRepository.findOne({ where: { id } });
+    if (pedido) {
+      pedido.estado = 'inactivo';
+      return this.pedidoRepository.save(pedido);
     }
     return null;
   }
