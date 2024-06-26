@@ -1,0 +1,98 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Mesero {
+  id: ID!
+  nombre: String
+  sueldo_basico: Float!
+  nivel: Int!
+  estado: String!
+  pedidos: [Pedido!]
+}
+
+type Pedido {
+  id: ID!
+  plato: Plato!
+  mesero: Mesero!
+  fecha: String!
+  mesa: Int!
+  cantidad: Int!
+  precio: Float!
+  estado: String!
+}
+
+type Plato {
+  id: ID!
+  nombre: String
+  estado: String!
+  pedidos: [Pedido!]
+}
+
+type Query {
+  platos(estado: String): [Plato!]!
+  plato(id: ID!): Plato!
+  meseros(estado: String): [Mesero!]!
+  mesero(id: ID!): Mesero!
+  pedidos(estado: String): Pedido!
+  pedido(id: ID!): Pedido!
+}
+
+type Mutation {
+  createPlato(createPlatoInput: CreatePlatoInput!): Plato!
+  updatePlato(updatePlatoInput: UpdatePlatoInput!): Plato!
+  removePlato(id: ID!): Plato!
+  createMesero(createMeseroInput: CreateMeseroInput!): Mesero!
+  updateMesero(updateMeseroInput: UpdateMeseroInput!): Mesero!
+  removeMesero(id: ID!): Mesero!
+  createPedido(createPedidoInput: CreatePedidoInput!): Pedido!
+  updatePedido(updatePedidoInput: UpdatePedidoInput!): Pedido!
+  removePedido(id: ID!): Pedido!
+}
+
+input CreatePlatoInput {
+  nombre: String
+  estado: String = "activo"
+}
+
+input UpdatePlatoInput {
+  nombre: String
+  estado: String = "activo"
+  id: ID!
+}
+
+input CreateMeseroInput {
+  nombre: String
+  sueldo_basico: Int!
+  nivel: Int!
+  estado: String = "activo"
+}
+
+input UpdateMeseroInput {
+  nombre: String
+  sueldo_basico: Int
+  nivel: Int
+  estado: String = "activo"
+  id: ID!
+}
+
+input CreatePedidoInput {
+  platoId: Int!
+  meseroId: Int!
+  fecha: String!
+  mesa: Int!
+  cantidad: Int!
+  precio: Int!
+  estado: String = "activo"
+}
+
+input UpdatePedidoInput {
+  platoId: Int
+  meseroId: Int
+  fecha: String
+  mesa: Int
+  cantidad: Int
+  precio: Int
+  estado: String = "activo"
+  id: ID!
+}
