@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
-import { UsuarioModule } from './usuario/usuario.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
-
+import  { PedidoModule } from './pedido/pedido.module';
 @Module({
-  imports: [UsuarioModule,
+  imports: [PedidoModule,
 
     TypeOrmModule.forRoot({
       type: 'postgres',
